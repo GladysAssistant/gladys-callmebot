@@ -57,7 +57,7 @@
         "fr": "Votre numéro de téléphone au format international, ex. +33612345678."
       },
       "required": true,
-      "placeholder": "+33612345678"
+      "placeholder": { "en": "+33612345678", "fr": "+33612345678" }
     },
     {
       "key": "api_key",
