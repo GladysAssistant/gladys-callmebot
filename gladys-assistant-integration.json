@@ -1,0 +1,73 @@
+{
+  "manifest_version": 1,
+  "type": "communication",
+  "name": "CallMeBot",
+  "description": {
+    "en": "Send Gladys notifications to WhatsApp or Signal through the free CallMeBot API.",
+    "fr": "Envoyez les notifications de Gladys sur WhatsApp ou Signal via l'API gratuite CallMeBot."
+  },
+  "version": "1.0.0",
+  "docker_image": "ghcr.io/gladysassistant/gladys-callmebot:1.0.0",
+  "gladys_version": ">=4.62.0",
+  "cover_image": "https://raw.githubusercontent.com/GladysAssistant/gladys-callmebot/main/cover.png",
+  "messaging": { "receive": false },
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": { "en": "How it works", "fr": "Fonctionnement" },
+      "description": {
+        "en": "CallMeBot is a free notification gateway: each user activates it once for WhatsApp or Signal, receives a personal API key, then enters it below in the My account block. Gladys then delivers its notifications to that number.",
+        "fr": "CallMeBot est une passerelle de notification gratuite : chaque utilisateur l'active une fois pour WhatsApp ou Signal, reçoit une clé d'API personnelle, puis la renseigne ci-dessous dans le bloc Mon compte. Gladys délivre ensuite ses notifications sur ce numéro."
+      },
+      "links": [
+        {
+          "url": "https://www.callmebot.com/blog/free-api-whatsapp-messages/",
+          "label": { "en": "Get a WhatsApp API key", "fr": "Obtenir une clé d'API WhatsApp" }
+        },
+        {
+          "url": "https://www.callmebot.com/blog/free-api-signal-send-messages/",
+          "label": { "en": "Get a Signal API key", "fr": "Obtenir une clé d'API Signal" }
+        }
+      ]
+    }
+  ],
+  "contact_schema": [
+    {
+      "key": "messaging_service",
+      "type": "select",
+      "label": { "en": "Messaging service", "fr": "Service de messagerie" },
+      "description": {
+        "en": "The messaging application CallMeBot should deliver to.",
+        "fr": "L'application de messagerie sur laquelle CallMeBot doit livrer les messages."
+      },
+      "required": true,
+      "default": "whatsapp",
+      "options": [
+        { "value": "whatsapp", "label": { "en": "WhatsApp", "fr": "WhatsApp" } },
+        { "value": "signal", "label": { "en": "Signal", "fr": "Signal" } }
+      ]
+    },
+    {
+      "key": "phone_number",
+      "type": "string",
+      "label": { "en": "Phone number", "fr": "Numéro de téléphone" },
+      "description": {
+        "en": "Your phone number in international format, e.g. +33612345678.",
+        "fr": "Votre numéro de téléphone au format international, ex. +33612345678."
+      },
+      "required": true,
+      "placeholder": "+33612345678"
+    },
+    {
+      "key": "api_key",
+      "type": "secret",
+      "label": { "en": "CallMeBot API key", "fr": "Clé d'API CallMeBot" },
+      "description": {
+        "en": "The personal API key CallMeBot sent you when you activated the service.",
+        "fr": "La clé d'API personnelle envoyée par CallMeBot lors de l'activation du service."
+      },
+      "required": true
+    }
+  ]
+}
