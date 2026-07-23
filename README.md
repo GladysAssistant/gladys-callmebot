@@ -44,7 +44,8 @@ by Gladys and linked from the Configuration screen.
 ├─ Dockerfile                        # Node 24 Alpine, read-only rootfs ready
 ├─ .github/workflows/release.yml     # UI-driven release: bump + tag + build
 ├─ .github/workflows/build.yml       # multi-arch build (git tag or called by release)
-└─ cover.png                         # catalog cover, 800×534 px, ≤150 KB
+└─ cover.jpg                         # catalog cover (same image as the Gladys core
+                                     #   integration), 800×534 px, ≤150 KB
 ```
 
 ## Run it locally
