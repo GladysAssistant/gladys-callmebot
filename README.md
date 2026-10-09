@@ -14,7 +14,8 @@ Gladys core.
 ## How it works
 
 This is a **send-only communication channel** (manifest
-`type: "communication"`, `messaging: { receive: false }`):
+`type: "communication"`, `messaging: { receive: false }`,
+`transports: ["cloud"]`):
 
 - each Gladys user enters their own credentials — messaging service, phone
   number, CallMeBot API key — in the **My account** block of the Configuration

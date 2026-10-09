@@ -21,6 +21,11 @@ test('the manifest declares a send-only communication channel', () => {
   assert.deepEqual(manifest.messaging, { receive: false });
 });
 
+test('the manifest declares the cloud transport only', () => {
+  // CallMeBot is an internet API: there is no LAN path, so no "Prefer local" toggle.
+  assert.deepEqual(manifest.transports, ['cloud']);
+});
+
 test('the contact_schema matches the keys the delivery code reads', () => {
   const keys = manifest.contact_schema.map((f) => f.key);
   assert.deepEqual(keys.sort(), ['api_key', 'messaging_service', 'phone_number']);
