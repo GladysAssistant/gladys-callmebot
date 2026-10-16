@@ -5,14 +5,14 @@
 // Gladys (`createFakeGladys` from `@gladysassistant/integration-sdk/testing`).
 // -----------------------------------------------------------------------------
 
-import { logger } from '@gladysassistant/integration-sdk';
+import { logger as defaultLogger } from '@gladysassistant/integration-sdk';
 import { sendMessage } from './callmebot.js';
 
 /**
- * Register every handler on `gladys`. `fetchFn` lets the tests replace the
- * CallMeBot HTTP call.
+ * Register every handler on `gladys`. `fetchFn` and `logger` let the tests
+ * replace the CallMeBot HTTP call and the SDK logger.
  */
-export function registerHandlers(gladys, { fetchFn } = {}) {
+export function registerHandlers(gladys, { fetchFn, logger = defaultLogger } = {}) {
   // --- Outgoing notification: deliver through the CallMeBot API --------------
   // `contact` = the target user's contact_schema values ({ messaging_service,
   // phone_number, api_key }); users without configured credentials are skipped

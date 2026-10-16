@@ -35,9 +35,11 @@ by Gladys and linked from the Configuration screen.
 
 ```
 .
-├─ index.js                          # SDK bootstrap + onSendMessage wiring
+├─ index.js                          # SDK bootstrap
 ├─ src/
+│  ├─ app.js                         # handler wiring (registerHandlers)
 │  └─ callmebot.js                   # CallMeBot "driver": URL building + delivery
+├─ test/                             # unit + wiring tests (node --test)
 ├─ docs/
 │  ├─ en.md                          # user documentation (linked from the
 │  └─ fr.md                          #   Configuration screen)

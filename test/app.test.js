@@ -26,12 +26,20 @@ function fakeFetch(body = 'Message queued. You will receive it in a few seconds.
   return { fn, calls };
 }
 
+// A logger stub recording the messages instead of printing them.
+function fakeLogger() {
+  const logs = [];
+  const record = (level) => (msg) => logs.push({ level, msg });
+  return { logger: { info: record('info'), error: record('error') }, logs };
+}
+
 async function setup(fetchBody) {
   const { fn, calls } = fakeFetch(fetchBody);
+  const { logger, logs } = fakeLogger();
   const gladys = createFakeGladys();
-  registerHandlers(gladys, { fetchFn: fn });
+  registerHandlers(gladys, { fetchFn: fn, logger });
   await gladys.connect();
-  return { gladys, calls };
+  return { gladys, calls, logs };
 }
 
 describe('registerHandlers', () => {
@@ -61,8 +69,9 @@ describe('registerHandlers', () => {
     await gladys.disconnect();
   });
 
-  test('shuts down gracefully', async () => {
-    const { gladys } = await setup();
+  test('runs the shutdown handler on SIGTERM', async () => {
+    const { gladys, logs } = await setup();
     await gladys.fake.shutdown('SIGTERM');
+    assert.deepEqual(logs, [{ level: 'info', msg: 'Received SIGTERM -> graceful shutdown' }]);
   });
 });
