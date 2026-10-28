@@ -1,5 +1,7 @@
 # CallMeBot
 
+## Overview
+
 Send Gladys notifications to **WhatsApp** or **Signal** through the free
 [CallMeBot](https://www.callmebot.com) API.
 
@@ -7,19 +9,28 @@ This is a **send-only notification channel**: Gladys uses it to deliver its
 messages (scenario notifications, alerts…) to your phone. There is no incoming
 path — you cannot talk back to Gladys through it.
 
-## Get your API key
+## Prerequisites
+
+- Gladys 4.86 or later.
+- For each Gladys user who should receive the notifications: a phone with
+  WhatsApp or Signal, and a personal CallMeBot API key obtained as described
+  below.
+- Internet access on the machine running Gladys: messages are sent through the
+  CallMeBot API (`api.callmebot.com`).
+
+### Get your API key
 
 CallMeBot requires a one-time activation per messaging service, from the phone
 that will receive the messages:
 
-### WhatsApp
+#### WhatsApp
 
 1. Add the CallMeBot number to your contacts (the up-to-date number is on the
    [official guide](https://www.callmebot.com/blog/free-api-whatsapp-messages/)).
 2. Send it the message `I allow callmebot to send me messages` on WhatsApp.
 3. The bot replies with your personal **API key**.
 
-### Signal
+#### Signal
 
 1. Follow the [official Signal guide](https://www.callmebot.com/blog/free-api-signal-send-messages/):
    you add the CallMeBot Signal number and send it the activation message.
@@ -44,8 +55,8 @@ the message shows up on their WhatsApp or Signal.
 
 ## Troubleshooting
 
-- **No message received**: check the integration logs from the Gladys UI (or
-  `docker logs` on the host). A `Failed to send message` error contains the
+- **No message received**: check the integration logs from the Gladys UI
+  (**Logs** tab of the integration page, or `docker logs` on the host). A `Failed to send message` error contains the
   answer of the CallMeBot API (invalid API key, unregistered phone number…).
 - **The first message is slow**: CallMeBot is a free shared service; a delivery
   can take a few seconds.
