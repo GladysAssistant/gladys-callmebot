@@ -6,12 +6,16 @@
     "en": "Send Gladys notifications to WhatsApp or Signal through the free CallMeBot API.",
     "fr": "Envoyez les notifications de Gladys sur WhatsApp ou Signal via l'API gratuite CallMeBot."
   },
-  "version": "1.0.2",
-  "docker_image": "ghcr.io/gladysassistant/gladys-callmebot:1.0.2",
+  "version": "1.0.3",
+  "docker_image": "ghcr.io/gladysassistant/gladys-callmebot:1.0.3",
   "gladys_version": ">=4.86.0",
   "cover_image": "https://raw.githubusercontent.com/GladysAssistant/gladys-callmebot/main/cover.jpg",
-  "categories": ["notifications"],
-  "transports": ["cloud"],
+  "categories": [
+    "notifications"
+  ],
+  "transports": [
+    "cloud"
+  ],
   "messaging": {
     "receive": false
   },
