@@ -59,7 +59,7 @@ identifiants CallMeBot, le message arrive sur son WhatsApp ou son Signal.
 ## Dépannage
 
 - **Aucun message reçu** : consultez les logs de l'intégration depuis
-  l'interface de Gladys (onglet **Logs** de la page de l'intégration, ou
+  l'interface de Gladys (onglet **Journaux** de la page de l'intégration, ou
   `docker logs` sur l'hôte). Une erreur
   `Failed to send message` contient la réponse de l'API CallMeBot (clé d'API
   invalide, numéro non enregistré…).
